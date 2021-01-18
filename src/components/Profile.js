@@ -18,6 +18,10 @@ const Profile = (props) => {
         <p><strong>Name:</strong> { name }</p> 
         <p><strong>Email:</strong> { email }</p> 
         <p><strong>ID:</strong> { id }</p>
+        <aside>
+        <button>Delete</button>
+        <button>Favorite</button>
+        </aside>
     </div>) : <h4>Loading...</h4>
 
     const errorDiv = () => {

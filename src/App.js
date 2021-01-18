@@ -58,7 +58,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar handleLogout={handleLogout} isAuth={isAuthenticated} />
+      <Navbar handleLogout={handleLogout} isAuth={isAuthenticated} user={currentUser} />
       <div className="container mt-5">
         <Switch>
           <Route path='/signup' component={ Signup } />
