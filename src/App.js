@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom'
+import jwt_decode from 'jwt-decode'
 import './App.css';
+import Welcome from './components/Welcome';
+import Navbar from './components/Navbar';
+import { Component } from 'react';
+
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  const user = localStorage.getItem('jwtToken');
+  console.log('Private Route >>>', user);
+  return <Route {...rest } render={(props) => {
+    return user ? <Component { ...rest } { ...props }/> : <Redirect to="/login" />
+  }}/>
+}
 
 function App() {
+  const [currentUser, setCurrentUser] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
+
+  useEffect (() => {
+    let token;
+    //if there is no token in localStorage, then user is Authenticated
+  })
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Welcome />
     </div>
   );
 }
